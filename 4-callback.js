@@ -28,14 +28,29 @@
 // 3. After 2 seconds are up, call the callback function with the sum
 // 4. Test your work!
 
-const add = (x, y, getSum) => {
-  setTimeout(() => {
-    const sum = x + y;
+// const add = (x, y, getSum) => {
+//   setTimeout(() => {
+//     const sum = x + y;
 
-    getSum(sum);
+//     getSum(sum);
+//   }, 2000);
+// };
+
+// add(1, 7, (sum) => {
+//   console.log(sum); // Should print: 8
+// });
+
+const doWorkCallback = (callback) => {
+  setTimeout(() => {
+    // callback('This is my error!', undefined);
+    callback(undefined, [1, 4, 7]);
   }, 2000);
 };
 
-add(1, 7, (sum) => {
-  console.log(sum); // Should print: 8
+doWorkCallback((error, result) => {
+  if (error) {
+    return console.log(`This is the error: ${error}`);
+  }
+
+  console.log(`This is the result: ${result}.`);
 });
